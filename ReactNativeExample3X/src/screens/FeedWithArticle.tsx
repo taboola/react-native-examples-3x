@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 // import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/rnt-dev';
-import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/rnt-dev';
+import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/react-native-plugin-3x';
 
 
 const ArticleWithWidgetInFlatList1 = () => {

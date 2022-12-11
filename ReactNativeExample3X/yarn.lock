@@ -1349,10 +1349,10 @@
   dependencies:
     "@sinonjs/commons" "^1.7.0"
 
-"@taboola/rnt-dev@^3.0.0-beta.1":
+"@taboola/react-native-plugin-3x@^3.0.0-beta.1":
   version "3.0.0-beta.1"
-  resolved "https://registry.yarnpkg.com/@taboola/rnt-dev/-/rnt-dev-3.0.0-beta.1.tgz#436369d108f4c2dbcc13880cb144252f62115629"
-  integrity sha512-tRX46Qqo356wwpZOrxyO1w9rz0U3lpsQ7EMKKkWWYE0ksa66/L+TJrmEnVdR3uxlcEAk6rWM9D1cU0CsBxl3Kg==
+  resolved "https://registry.yarnpkg.com/@taboola/react-native-plugin-3x/-/react-native-plugin-3x-3.0.0-beta.1.tgz#d6bc65db9b18d86a84c65ab73d472aa26fe89b6a"
+  integrity sha512-M1DzXgACiUkf+1Yt7+sX+plMB0xidDbEg4O1hJ7KsE7NDIIcHcj+MeIYXh0JIXzY+7EdoMrCcF1WFjuhywzU0Q==
 
 "@tootallnate/once@1":
   version "1.1.2"
