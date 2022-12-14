@@ -19,19 +19,7 @@ const MutipleUnitsExample = () => {
     const p5 = <AppText key="p2">{paragraphs[4]}</AppText>;
     const p6 = <AppText key="p2">{paragraphs[4]}</AppText>;
 
-    // const [unitRef, setRef] = useState<any>(null);
-    // const [unitRef2, setRef2] = useState<any>(null);
-    // const [unitRef3, setRef3] = useState<any>(null);
-    // const [unitRef4, setRef4] = useState<any>(null);
-    // const [unitRef5, setRef5] = useState<any>(null);
-    // const [unitRef6, setRef6] = useState<any>(null);
 
-    // const [height, setHeight] = useState(0);
-    // const [height2, setHeight2] = useState(0);
-    // const [height3, setHeight3] = useState(0);
-    // const [height4, setHeight4] = useState(0);
-    // const [height5, setHeight5] = useState(0);
-    // const [height6, setHeight6] = useState(0);
 
     const page = Taboola.getClassicPage(
         'https://www.example.com/articles?id=123',
