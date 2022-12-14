@@ -19,6 +19,13 @@ function Feed() {
       </View>
   );
 }
+function MultipleScreens() {
+  return (
+      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+        <MutipleUnitsExample />
+      </View>
+  );
+}
 
 
 
@@ -47,6 +54,12 @@ function Main() {
               navo.navigate('Tabs');
             }}
         />
+          <Button
+            title={'MultipleScreens'}
+            onPress={() => {
+              navo.navigate('MultipleScreens');
+            }}
+        />
 
       </View>
   );
@@ -55,6 +68,7 @@ function Main() {
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import ArticleWithWidgetInFlatList from "./src/screens/ArticleWithWidgetInFlatList";
 import FeedWithArticle from "./src/screens/FeedWithArticle";
+import MutipleUnitsExample from "./src/screens/MutipleUnitsExample";
 
 
 const Tab = createMaterialTopTabNavigator();
@@ -80,6 +94,7 @@ function App() {
           <Stack.Screen name="Feed" component={Feed} />
           <Stack.Screen name="LimiteFeed" component={Feed} />
           <Stack.Screen name="Tabs" component={MyTabs} />
+          <Stack.Screen name="MultipleScreens" component={MultipleScreens} />
         </Stack.Navigator>
       </NavigationContainer>
   );
