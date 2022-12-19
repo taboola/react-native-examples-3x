@@ -1,6 +1,6 @@
 ### react-native-examples-3x
 
-**For _detailed_ implementation guidelines**, please visit the **[Taboola Dev Center](https://developers.taboola.com/taboolasdk/docs/sdk-3x-react-native-plugin)**.
+For _detailed_ **implementation guidelines**, please visit the **[Taboola Dev Center](https://developers.taboola.com/taboolasdk/docs/sdk-3x-react-native-plugin)**.
 
 ----
 
