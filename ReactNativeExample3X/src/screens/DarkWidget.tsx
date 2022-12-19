@@ -15,14 +15,14 @@ import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/react-native-plugin-3x';
 
 const ArticleWithWidgetInFlatList1 = () => {
   const page = Taboola.getClassicPage(
-    'https://www.example.com/articles?id=123',
+    'https://blog.taboola.com',
     'article'
   ).init();
 
   const [Unit, unitRef] = page.useGetUnit(
-    'Feed without video',
-    'thumbs-feed-01',
-    TBL_PLACEMENT_TYPE.FEED
+    'Mid Article',
+    'alternating-widget-1x2',
+    TBL_PLACEMENT_TYPE.PAGE_BOTTOM
   );
 
   useEffect(() => {
@@ -62,7 +62,8 @@ const ArticleWithWidgetInFlatList1 = () => {
           }}
           style={{
             width: '100%',
-            flex: 1          }}
+            flex: 1,
+          }}
         />
 
       </View>

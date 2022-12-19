@@ -1,102 +1,124 @@
 import * as React from 'react';
-import { Button, View } from 'react-native';
+import { Button, View, SafeAreaView, StyleSheet, Image, Text } from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
+//import NavButton from './NavButton';
 
+const styles = StyleSheet.create({
+  container: {
+    alignItems: 'center',
+  },
+  logo: {
+    width: 20,
+    height: 20,
+    paddingTop: 30,
+    scale: 0.55
+  },
+  button: {
+    width: 800,
+    height: undefined,
+    padding: 5
+  }
+});
 
 function Widget() {
   return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        {/* eslint-disable-next-line react/jsx-no-undef */}
-        <ArticleWithWidgetInFlatList />
-      </View>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      {/* eslint-disable-next-line react/jsx-no-undef */}
+      <ArticleWithWidgetInFlatList />
+    </View>
   );
 }
 function Feed() {
   return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <FeedWithArticle />
-      </View>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <FeedWithArticle />
+    </View>
   );
 }
-function MultipleScreens() {
+
+function FeedAndWebView() {
   return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <MutipleUnitsExample />
-      </View>
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <FeedWithWebView />
+    </View>
+  );
+}
+
+function MyTabs() {
+  const Tab = createMaterialTopTabNavigator();
+  return (
+    <Tab.Navigator>
+      <Tab.Screen name="1" component={Feed} />
+      <Tab.Screen name="2" component={Feed} />
+      <Tab.Screen name="3" component={Feed} />
+    </Tab.Navigator>
   );
 }
 
 
+function FlatList() {
+  return (
+    <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
+      <ArticleWithWidgetInFlatList />
+    </View>
+  );
+}
+const MenuButton = (prop) => {
+  const navo = useNavigation();
+  var navigation = String(prop.navigate)
+  return (
+    <View style={styles.button}>
+      <Button title={prop.name} onPress={() => {
+        navo.navigate(navigation);
+      }}>
 
+      </Button>
+    </View>
+  );
+}
 
 function Main() {
-  const navo = useNavigation();
+
   return (
-      <View style={{ flex: 1, alignItems: 'center', justifyContent: 'center' }}>
-        <Button
-            title={'Feed'}
-            onPress={() => {
-              navo.navigate('Feed');
-            }}
-        />
-        <Button
-            title={'Widget'}
-            onPress={() => {
-              navo.navigate('Widget');
-            }}
-        />
-
-
-        <Button
-            title={'Tabs Screen'}
-            onPress={() => {
-              navo.navigate('Tabs');
-            }}
-        />
-          <Button
-            title={'MultipleScreens'}
-            onPress={() => {
-              navo.navigate('MultipleScreens');
-            }}
-        />
-
-      </View>
+    <View style={styles.container} >
+      <Image style={{ width: '100%', height: undefined, aspectRatio: 4 }} source={require('./assets/taboola-logo.png')} />
+      <Text style={{ paddingTop: 15, fontSize: 15 }}>Taboola SDK-3.x iOS / 3.x Android  </Text>
+      <Text style={{ paddingTop: 10, fontSize: 15 }}> Taboola React Native Plugin  - 3.x </Text>
+      <Text style={{ paddingTop: 10, fontSize: 15 }}>React Native version 0.70.6 </Text>
+      <MenuButton name="Feed" navigate="Feed"></MenuButton>
+      <MenuButton name="Feed And WebView" navigate="FeedAndWebView"></MenuButton>
+      <MenuButton name="Widget In Flat List" navigate="Widget"></MenuButton>
+      <MenuButton name="Tabs Screen" navigate="Tabs"></MenuButton>
+      <MenuButton name="Widget Dark" navigate="WidgetInFlatList"></MenuButton>
+      <MenuButton name="Feed" navigate="Feed"></MenuButton>
+      <MenuButton name="Feed" navigate="Feed"></MenuButton>
+    </View>
   );
 }
 
 import { createMaterialTopTabNavigator } from '@react-navigation/material-top-tabs';
 import ArticleWithWidgetInFlatList from "./src/screens/ArticleWithWidgetInFlatList";
 import FeedWithArticle from "./src/screens/FeedWithArticle";
-import MutipleUnitsExample from "./src/screens/MutipleUnitsExample";
+import FeedWithWebView from "./src/screens/FeedWithWebView";
 
 
-const Tab = createMaterialTopTabNavigator();
-
-function MyTabs() {
-  return (
-      <Tab.Navigator>
-        <Tab.Screen name="1" component={Feed} />
-        <Tab.Screen name="2" component={Feed} />
-        <Tab.Screen name="3" component={Feed} />
-      </Tab.Navigator>
-  );
-}
 
 const Stack = createNativeStackNavigator();
 
 function App() {
   return (
-      <NavigationContainer>
-        <Stack.Navigator>
-          <Stack.Screen name="Main" component={Main} />
-          <Stack.Screen name="Widget" component={Widget} />
-          <Stack.Screen name="Feed" component={Feed} />
-          <Stack.Screen name="LimiteFeed" component={Feed} />
-          <Stack.Screen name="Tabs" component={MyTabs} />
-          <Stack.Screen name="MultipleScreens" component={MultipleScreens} />
-        </Stack.Navigator>
-      </NavigationContainer>
+    <NavigationContainer >
+      <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Screen name="Main" component={Main} />
+        <Stack.Screen name="Widget" component={Widget} />
+        <Stack.Screen name="Feed" component={Feed} />
+        <Stack.Screen name="LimiteFeed" component={Feed} />
+        <Stack.Screen name="Tabs" component={MyTabs} />
+        <Stack.Screen name="FeedAndWebView" component={FeedAndWebView} />
+        <Stack.Screen name="WidgetInFlatList" component={FlatList} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 

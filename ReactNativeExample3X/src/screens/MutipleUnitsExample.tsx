@@ -132,9 +132,7 @@ const MutipleUnitsExample = () => {
                                         onResize={(e) => {}}
                                         style={{
                                             width: '100%',
-                                            flex: 1,
-                                            backgroundColor: 'red',
-                                        }}
+                                            flex: 1,                                        }}
                                     />
                                 </View>
                             );
@@ -148,7 +146,6 @@ const MutipleUnitsExample = () => {
                                         style={{
                                             width: '100%',
                                             flex: 1,
-                                            backgroundColor: 'red',
                                         }}
                                     />
                                 </View>
@@ -162,9 +159,7 @@ const MutipleUnitsExample = () => {
                                         onResize={(e) => console.log(e)}
                                         style={{
                                             width: '100%',
-                                            flex: 1,
-                                            backgroundColor: 'red',
-                                        }}
+                                            flex: 1,                                        }}
                                     />
                                 </View>
                             );
@@ -187,9 +182,7 @@ const MutipleUnitsExample = () => {
                                         onResize={(e) => console.log(e)}
                                         style={{
                                             width: '100%',
-                                            flex: 1,
-                                            backgroundColor: 'red',
-                                        }}
+                                            flex: 1,                                        }}
                                     />
                                 </View>
                             );
@@ -202,9 +195,7 @@ const MutipleUnitsExample = () => {
                                         onResize={(e) => console.log(e)}
                                         style={{
                                             width: '100%',
-                                            flex: 1,
-                                            backgroundColor: 'red',
-                                        }}
+                                            flex: 1,                                        }}
                                     />
                                 </View>
                             );
@@ -218,9 +209,7 @@ const MutipleUnitsExample = () => {
                                         onAdReceiveFail={(e) => console.log(e)}
                                         style={{
                                             width: '100%',
-                                            flex: 1,
-                                            backgroundColor: 'red',
-                                        }}
+                                            flex: 1,                                        }}
                                     />
                                 </View>
                             );

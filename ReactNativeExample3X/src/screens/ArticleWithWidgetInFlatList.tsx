@@ -79,7 +79,6 @@ const ArticleWithWidgetInFlatList = () => {
 
                                             width: '100%',
                                             flex: 1,
-                                            backgroundColor: 'red',
                                         }}
                                     />
                                 </View>

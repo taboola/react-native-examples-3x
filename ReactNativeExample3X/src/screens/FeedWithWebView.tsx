@@ -1,17 +1,16 @@
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
 import React, { FC, useEffect, useState } from 'react';
-
-import {
-  Text,
-  ScrollView,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  TextProps,
-  View,
-} from 'react-native';
-
-// import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/rnt-dev';
+import { WebView } from 'react-native-webview';
+import { Text, ScrollView, TextProps, View, StyleSheet, } from 'react-native';
 import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/react-native-plugin-3x';
 
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    padding: 24,
+    backgroundColor: "#61dafb"
+  },
+});
 
 const ArticleWithWidgetInFlatList1 = () => {
   const page = Taboola.getClassicPage(
@@ -39,18 +38,26 @@ const ArticleWithWidgetInFlatList1 = () => {
   }, [unitRef]);
 
   return (
+
     // if we get heigher height form the screen than the screen will not fully cover the all screen on android.
     <ScrollView style={{ width: '100%' }}>
+
+
       <View style={{ flex: 1 }}>
-        <AppText style={{ fontWeight: 'bold', fontSize: 40 }}>Feed </AppText>
+
+
+        <AppText style={{ fontWeight: 'bold', fontSize: 40 }}>Feed With WebView</AppText>
         <AppText>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-          ab illo inventore veritatis et quasi architecto beatae vitae dicta
-          sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-          qui ratione voluptatem sequi nesciunt.
+          Below is a webView element followed by a Taboola feed.
         </AppText>
+      </View>
+
+      <View
+        renderToHardwareTextureAndroid={true}>
+        <WebView nestedScrollEnabled
+          source={{ uri: 'https://www.taboola.com/' }}
+          style={{ height: 300 }}
+        />
       </View>
       <View style={{ flex: 1 }}>
         <Unit
@@ -62,10 +69,15 @@ const ArticleWithWidgetInFlatList1 = () => {
           }}
           style={{
             width: '100%',
-            flex: 1          }}
+            flex: 1,
+          }}
         />
 
+
+
       </View>
+
+
     </ScrollView>
   );
 };
