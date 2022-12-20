@@ -7,9 +7,10 @@ import {
     View,
 } from 'react-native';
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, { FC, useEffect, useLayoutEffect } from 'react';
+import React, {FC, useEffect, useLayoutEffect, useState} from 'react';
 // import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/rnt-dev';
 import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/react-native-plugin-3x';
+import ClassicUnit from "@taboola/react-native-plugin-3x/lib/typescript/ClassicUnit.android";
 
 const MutipleUnitsExample = () => {
     const p1 = <AppText key="p1">{paragraphs[0]}</AppText>;
@@ -18,13 +19,15 @@ const MutipleUnitsExample = () => {
     const p4 = <AppText key="p2">{paragraphs[3]}</AppText>;
     const p5 = <AppText key="p2">{paragraphs[4]}</AppText>;
     const p6 = <AppText key="p2">{paragraphs[4]}</AppText>;
-
-
+    const [ref, setRef] = useState<ClassicUnit>();
+        ref.fetchContent()
 
     const page = Taboola.getClassicPage(
         'https://www.example.com/articles?id=123',
         'article'
     ).init();
+
+
 
     const [Unit, unitRef] = page.useGetUnit(
         'Below Article Thumbnails Limited-20',

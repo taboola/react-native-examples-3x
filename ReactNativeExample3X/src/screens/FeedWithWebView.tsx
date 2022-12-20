@@ -1,97 +1,88 @@
-import React, { FC, useEffect, useState } from 'react';
+import * as React from 'react';
+import { Image, Linking, Text, View, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
 import { WebView } from 'react-native-webview';
-import { Text, ScrollView, TextProps, View, StyleSheet, } from 'react-native';
-import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/react-native-plugin-3x';
+import {Taboola, TBL_PLACEMENT_TYPE} from "@taboola/react-native-plugin-3x";
+import {useEffect, useState} from "react";
 
+const FeedWithWEbView=()=> {
+    const page = Taboola.getClassicPage(
+        'https://www.example.com/articles?id=123',
+        'article'
+    ).init();
+    const [Unit, unitRef] = page.useGetUnit(
+        'Feed without video',
+        'thumbs-feed-01',
+        TBL_PLACEMENT_TYPE.FEED
+    );
+    const [height,setHifgt] = useState(0)
+
+    useEffect(() => {
+        return () => {
+            //clear page from hashMap on the bridge
+            page.removePage();
+        };
+    }, [page]);
+
+    useEffect(() => {
+        unitRef.fetchContent();
+    }, [unitRef]);
+
+    const [webViewHeight, setWebViewHeight] = React.useState(null);
+
+    const onMessage = (event) => {
+        setWebViewHeight(Number(event.nativeEvent.data));
+    }
+
+    const onShouldStartLoadWithRequest = (request) => {
+        if (request.navigationType === 'click') {
+            // Open all new click-throughs in external browser.
+            Linking.openURL(request.url);
+            return false;
+        }
+        return true;
+    }
+    return (
+        <View style={styles.container}>
+            <ScrollView contentContainerStyle={{ flexGrow: 1, height:  webViewHeight + height}}>
+
+                <WebView
+                    source={{ uri: 'https://tofugear.com' }}
+                    bounces={true}
+                    scrollEnabled={false}
+                    onMessage={onMessage}
+                    injectedJavaScript="window.ReactNativeWebView.postMessage(Math.max(document.body.offsetHeight, document.body.scrollHeight));"
+                    style={styles.content}
+                    onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
+                />
+                <View style={styles.container}>
+                    <Unit
+                        onResize={(e)=>setHifgt(e)}
+                        style={{
+                            width: '100%',
+                            flex: 1,
+                            backgroundColor:'red'
+                        }}
+                    />
+                </View>
+            </ScrollView>
+        </View>
+    );
+}
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: "#61dafb"
-  },
+    container: {
+        flex: 1,
+        width: '100%'
+    },
+    header: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%'
+    },
+    content: {
+        borderTopLeftRadius: 30,
+        borderTopRightRadius: 30,
+    },
 });
 
-const ArticleWithWidgetInFlatList1 = () => {
-  const page = Taboola.getClassicPage(
-    'https://www.example.com/articles?id=123',
-    'article'
-  ).init();
-
-  const [Unit, unitRef] = page.useGetUnit(
-    'Feed without video',
-    'thumbs-feed-01',
-    TBL_PLACEMENT_TYPE.FEED
-  );
-
-  useEffect(() => {
-    return () => {
-      page
-        .removePage()
-        .then((e) => console.log(e))
-        .catch((e) => console.log(e));
-    };
-  }, [page]);
-
-  useEffect(() => {
-    unitRef.fetchContent();
-  }, [unitRef]);
-
-  return (
-
-    // if we get heigher height form the screen than the screen will not fully cover the all screen on android.
-    <ScrollView style={{ width: '100%' }}>
-
-
-      <View style={{ flex: 1 }}>
-
-
-        <AppText style={{ fontWeight: 'bold', fontSize: 40 }}>Feed With WebView</AppText>
-        <AppText>
-          Below is a webView element followed by a Taboola feed.
-        </AppText>
-      </View>
-
-      <View
-        renderToHardwareTextureAndroid={true}>
-        <WebView nestedScrollEnabled
-          source={{ uri: 'https://www.taboola.com/' }}
-          style={{ height: 300 }}
-        />
-      </View>
-      <View style={{ flex: 1 }}>
-        <Unit
-
-          onItemClick={(e) => console.log(e)}
-          onAdReceiveFail={(e) => console.log(e)}
-          onResize={(e) => {
-            console.log(e, 'new Height');
-          }}
-          style={{
-            width: '100%',
-            flex: 1,
-          }}
-        />
-
-
-
-      </View>
-
-
-    </ScrollView>
-  );
-};
-
-export default ArticleWithWidgetInFlatList1;
-
-const AppText: FC<TextProps> = ({ ...props }) => {
-  return (
-    <Text
-      style={{
-        fontSize: 16,
-        marginVertical: 8,
-      }}
-      {...props}
-    />
-  );
-};
+export default FeedWithWEbView
