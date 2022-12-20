@@ -14,7 +14,7 @@ const FeedWithWEbView=()=> {
         'thumbs-feed-01',
         TBL_PLACEMENT_TYPE.FEED
     );
-    const [height,setHifgt] = useState(0)
+    const [height,setHeight] = useState(0)
 
     useEffect(() => {
         return () => {
@@ -56,7 +56,7 @@ const FeedWithWEbView=()=> {
                 />
                 <View style={styles.container}>
                     <Unit
-                        onResize={(e)=>setHifgt(e)}
+                        onResize={(e)=>setHeight(e)}
                         style={{
                             width: '100%',
                             flex: 1,
