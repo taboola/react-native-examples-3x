@@ -10,9 +10,9 @@ const FeedWithWEbView=()=> {
         'article'
     ).init();
     const [Unit, unitRef] = page.useGetUnit(
-        'Feed without video',
-        'thumbs-feed-01',
-        TBL_PLACEMENT_TYPE.FEED
+        'Mid Article',
+        'alternating-widget-without-video-1x4',
+        TBL_PLACEMENT_TYPE.PAGE_MIDDLE
     );
     const [height,setHeight] = useState(0)
 
@@ -43,7 +43,7 @@ const FeedWithWEbView=()=> {
     }
     return (
         <View style={styles.container}>
-            <ScrollView contentContainerStyle={{ flexGrow: 1, height:  webViewHeight + height}}>
+            <ScrollView contentContainerStyle={{  height:  webViewHeight}}>
 
                 <WebView
                     source={{ uri: 'https://tofugear.com' }}
@@ -54,16 +54,13 @@ const FeedWithWEbView=()=> {
                     style={styles.content}
                     onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
                 />
-                <View style={styles.container}>
                     <Unit
                         onResize={(e)=>setHeight(e)}
                         style={{
                             width: '100%',
-                            flex: 1,
                             backgroundColor:'red'
                         }}
                     />
-                </View>
             </ScrollView>
         </View>
     );
@@ -72,16 +69,18 @@ const FeedWithWEbView=()=> {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        width: '100%'
+        width: '100%',
     },
     header: {
         alignItems: 'center',
         justifyContent: 'center',
-        width: '100%'
+        width: '100%',
     },
     content: {
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
+        opacity: 0.99,
+        overflow: 'hidden',
     },
 });
 
