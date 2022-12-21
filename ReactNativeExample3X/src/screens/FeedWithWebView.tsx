@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Image, Linking, Text, View, SafeAreaView, ScrollView, StyleSheet } from 'react-native';
-import { WebView } from 'react-native-webview';
+import {Linking, View, ScrollView, StyleSheet} from 'react-native';
+import {WebView} from 'react-native-webview';
 import {Taboola, TBL_PLACEMENT_TYPE} from "@taboola/react-native-plugin-3x";
-import {useEffect, useState} from "react";
+import {useEffect} from "react";
 
-const FeedWithWEbView=()=> {
+const FeedWithWEbView = () => {
     const page = Taboola.getClassicPage(
         'https://www.example.com/articles?id=123',
         'article'
@@ -14,7 +14,6 @@ const FeedWithWEbView=()=> {
         'alternating-widget-without-video-1x4',
         TBL_PLACEMENT_TYPE.PAGE_MIDDLE
     );
-    const [height,setHeight] = useState(0)
 
     useEffect(() => {
         return () => {
@@ -43,10 +42,9 @@ const FeedWithWEbView=()=> {
     }
     return (
         <View style={styles.container}>
-            <ScrollView contentContainerStyle={{  height:  webViewHeight}}>
-
+            <ScrollView contentContainerStyle={{height: webViewHeight}}>
                 <WebView
-                    source={{ uri: 'https://tofugear.com' }}
+                    source={{uri: 'https://tofugear.com'}}
                     bounces={true}
                     scrollEnabled={false}
                     onMessage={onMessage}
@@ -54,13 +52,12 @@ const FeedWithWEbView=()=> {
                     style={styles.content}
                     onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
                 />
-                    <Unit
-                        onResize={(e)=>setHeight(e)}
-                        style={{
-                            width: '100%',
-                            backgroundColor:'red'
-                        }}
-                    />
+                <Unit
+                    style={{
+                        width: '100%',
+                        backgroundColor: 'red'
+                    }}
+                />
             </ScrollView>
         </View>
     );
