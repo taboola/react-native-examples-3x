@@ -42,7 +42,7 @@ const FeedWithWEbView = () => {
     }
     return (
         <View style={styles.container}>
-            <ScrollView contentContainerStyle={{height: webViewHeight}}>
+            <ScrollView androidHardwareAccelerationDisabled={true} contentContainerStyle={{height: webViewHeight}}>
                 <WebView
                     source={{uri: 'https://tofugear.com'}}
                     bounces={true}
