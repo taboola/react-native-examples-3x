@@ -47,9 +47,8 @@ const FeedWithWEbView = () => {
             opacity: 0.99,
             overflow: 'hidden'
         }}>
-            <ScrollView androidHardwareAccelerationDisabled={true} contentContainerStyle={{height: webViewHeight}}>
+            <ScrollView  contentContainerStyle={{height: webViewHeight}}>
                 <WebView
-                    androidHardwareAccelerationDisabled={true}
                     source={{uri: 'https://tofugear.com'}}
                     bounces={true}
                     scrollEnabled={false}
@@ -73,7 +72,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
-        opacity: 0.99, overflow: 'hidden'
+
     },
     header: {
         alignItems: 'center',
