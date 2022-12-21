@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, View, SafeAreaView, StyleSheet, Image, Text } from 'react-native';
+import {Button, View, SafeAreaView, StyleSheet, Image, Text, Platform} from 'react-native';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 //import NavButton from './NavButton';
@@ -79,13 +79,19 @@ const MenuButton = (prop) => {
 }
 
 function Main() {
-
+const getRNVersion=()=> {
+        const versionData = Platform.constants.reactNativeVersion;
+        return `${versionData.major ?? ''}${
+            versionData.minor ? `.${versionData.minor}` : ''
+        }${versionData.patch ? `.${versionData.patch}` : ''}${
+            versionData.prerelease ? `.${versionData.prerelease}` : ''
+        }`}
   return (
     <View style={styles.container} >
       <Image style={{ width: '100%', height: undefined, aspectRatio: 4 }} source={require('./assets/taboola-logo.png')} />
       <Text style={{ paddingTop: 15, fontSize: 15 }}>Taboola SDK-3.x iOS / 3.x Android  </Text>
       <Text style={{ paddingTop: 10, fontSize: 15 }}> Taboola React Native Plugin  - 3.x </Text>
-      <Text style={{ paddingTop: 10, fontSize: 15 }}>React Native version 0.70.6 </Text>
+      <Text style={{ paddingTop: 10, fontSize: 15 }}>React Native version V{getRNVersion()} </Text>
       <MenuButton name="Feed" navigate="Feed"></MenuButton>
       <MenuButton name="Feed And WebView" navigate="FeedAndWebView"></MenuButton>
       <MenuButton name="Widget In Flat List" navigate="Widget"></MenuButton>
