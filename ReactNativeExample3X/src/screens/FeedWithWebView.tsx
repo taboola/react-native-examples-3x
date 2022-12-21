@@ -41,10 +41,12 @@ const FeedWithWEbView = () => {
         return true;
     }
     return (
-        <View style={{    flex: 1,
+        <View style={{
+            flex: 1,
             width: '100%',
             opacity: 0.99,
-            overflow: 'hidden'}}>
+            overflow: 'hidden'
+        }}>
             <ScrollView androidHardwareAccelerationDisabled={true} contentContainerStyle={{height: webViewHeight}}>
                 <WebView
                     androidHardwareAccelerationDisabled={true}
