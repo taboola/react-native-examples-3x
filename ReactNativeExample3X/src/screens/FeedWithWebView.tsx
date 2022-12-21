@@ -41,9 +41,13 @@ const FeedWithWEbView = () => {
         return true;
     }
     return (
-        <View style={styles.container}>
+        <View style={{    flex: 1,
+            width: '100%',
+            opacity: 0.99,
+            overflow: 'hidden'}}>
             <ScrollView androidHardwareAccelerationDisabled={true} contentContainerStyle={{height: webViewHeight}}>
                 <WebView
+                    androidHardwareAccelerationDisabled={true}
                     source={{uri: 'https://tofugear.com'}}
                     bounces={true}
                     scrollEnabled={false}
@@ -67,6 +71,7 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         width: '100%',
+        opacity: 0.99, overflow: 'hidden'
     },
     header: {
         alignItems: 'center',
@@ -78,6 +83,7 @@ const styles = StyleSheet.create({
         borderTopRightRadius: 30,
         opacity: 0.99,
         overflow: 'hidden',
+        marginTop: 20,
     },
 });
 
