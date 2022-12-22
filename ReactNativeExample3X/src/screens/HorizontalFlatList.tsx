@@ -10,7 +10,7 @@ import {
 
 import Widget from "./Widget";
 
-const SCENES = ['WIDGET', 'WIDGET_DARK', 'FEED'];
+const SCENES = ['WIDGET', 'WIDGET', 'WIDGET'];
 
 const HorizontalFlatList = () => {
     // const ref = useRef(null);
@@ -28,9 +28,9 @@ const HorizontalFlatList = () => {
         switch (item) {
             case 'WIDGET':
                 return renderWidgetScene();
-            case 'WIDGET_DARK':
+            case 'WIDGET':
                 return renderWidgetScene();
-            case 'FEED':
+            case 'WIDGET':
                 return renderWidgetScene();
             default:
                 return <View/>;
