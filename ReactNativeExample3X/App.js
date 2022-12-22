@@ -46,6 +46,14 @@ function FeedAndWebView() {
     );
 }
 
+function HorizontalList() {
+    return (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <HorizontalFlatList/>
+        </View>
+    );
+}
+
 function MyTabs() {
     const Tab = createMaterialTopTabNavigator();
     return (
@@ -68,7 +76,7 @@ function FlatList() {
 
 const MenuButton = (prop) => {
     const navo = useNavigation();
-    var navigation = String(prop.navigate)
+    const navigation = String(prop.navigate)
     return (
         <View style={styles.button}>
             <Button title={prop.name} onPress={() => {
@@ -103,6 +111,7 @@ function Main() {
             <MenuButton name="Widget Dark" navigate="WidgetInFlatList"></MenuButton>
             <MenuButton name="Feed" navigate="Feed"></MenuButton>
             <MenuButton name="Feed" navigate="Feed"></MenuButton>
+            <MenuButton name="Horizontal List" navigate="HorizontalList"></MenuButton>
         </View>
     );
 }
@@ -111,6 +120,7 @@ import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs
 import ArticleWithWidgetInFlatList from "./src/screens/ArticleWithWidgetInFlatList";
 import FeedWithArticle from "./src/screens/FeedWithArticle";
 import FeedWithWebView from "./src/screens/FeedWithWebView";
+import HorizontalFlatList from "./src/screens/HorizontalFlatList";
 
 
 const Stack = createNativeStackNavigator();
@@ -127,6 +137,7 @@ function App() {
                     <Stack.Screen name="Tabs" component={MyTabs}/>
                     <Stack.Screen name="FeedAndWebView" component={FeedAndWebView}/>
                     <Stack.Screen name="WidgetInFlatList" component={FlatList}/>
+                    <Stack.Screen name="HorizontalList" component={HorizontalList}/>
                 </Stack.Navigator>
             </NavigationContainer>
         </SafeAreaView>
