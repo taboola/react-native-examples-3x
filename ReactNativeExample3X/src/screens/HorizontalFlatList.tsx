@@ -5,20 +5,33 @@ import {
     FlatList,
     Text,
     StyleSheet,
-    TextProps, ScrollView, Dimensions,
+    TextProps, ScrollView, Dimensions, Platform,
 } from 'react-native';
 
 import Widget from "./Widget";
+import {useSafeAreaInsets} from "react-native-safe-area-context";
 
 const SCENES = ['WIDGET', 'WIDGET', 'WIDGET'];
 
 const HorizontalFlatList = () => {
+    const ref = useRef(null)
+    const SCREEN = Dimensions.get('window');
+    const insets = useSafeAreaInsets();
     // const ref = useRef(null);
     const p1 = <AppText key="p1">{paragraphs[0]}</AppText>;
+    const [width, setWidth] = useState(
+        Platform.OS === 'ios'
+            ? SCREEN.width - insets.left - insets.right
+            : SCREEN.width,
+    );
+    Dimensions.addEventListener('change', e => {
+        const {width} = e.window;
+        setWidth(width);
+        ref.current&&ref.current.scrollToOffset({ animated: true, offset: 0 });
 
-
+    });
     const renderWidgetScene = () => (
-        <ScrollView contentContainerStyle={{flex: 1, width: Dimensions.get('window').width}}>
+        <ScrollView contentContainerStyle={{ width: width}}>
             {p1}
             <Widget/>
         </ScrollView>
@@ -48,6 +61,7 @@ const HorizontalFlatList = () => {
                 Here's a Taboola Widget in FlatList
             </Text>
             <FlatList
+                ref={ref}
                 data={SCENES}
                 renderItem={renderListItem}
                 horizontal
