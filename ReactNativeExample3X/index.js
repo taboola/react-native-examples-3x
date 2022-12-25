@@ -9,5 +9,6 @@ import { Taboola} from '@taboola/react-native-plugin-3x'
 
 //init Taboola with publisher ID
 Taboola.init('sdk-tester-demo');
+// Taboola.setGlobalExtraProperties({"darkMode": "true"})
 
 AppRegistry.registerComponent(appName, () => App);

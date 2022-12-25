@@ -1,12 +1,12 @@
-import {View, StyleSheet} from "react-native";
+import {View, StyleSheet, Button} from "react-native";
 import {Taboola, TBL_PLACEMENT_TYPE} from "@taboola/react-native-plugin-3x";
 import React, {FC, useEffect, useLayoutEffect, useRef, useState} from 'react';
 
-const Widget = () => {
+const Widget = (props) => {
     const page = Taboola.getClassicPage(
         'https://www.example.com/articles?id=123',
         'article'
-    ).init();
+    ).init(page => page.setPageExtraProperties({"darkMode": "true"}));
 
     const [Unit, unitRef] = page.useGetUnit(
         'Mid Article',
@@ -26,19 +26,30 @@ const Widget = () => {
         unitRef.fetchContent();
     }, [unitRef]);
     return (
-        <Unit
-            onItemClick={(e) => console.log(e)}
-            onAdReceiveFail={(e) => console.log(e)}
-            onResize={(e) => {
-                console.log(e, "new Height")
+        <>
+            <Button
+                title={'refresh page'}
+                onPress={() => {
+                    // page.refresh();
+                    // page.setPageExtraProperties({"darkMode": "true"})
+                }}
+            />
+            <Unit
+                onItemClick={(e) => console.log(e)}
+                onAdReceiveFail={(e) => console.log(e)}
+                onResize={(e) => {
+                    console.log(e, "new Height")
 
-            }}
-            style={{
+                }}
+                style={{
 
-                width: '100%',
-                flex: 1,
-            }}
-        />
+                    width: '100%',
+                    flex: 1,
+                }}
+                {...props}
+            />
+        </>
+
     )
 }
 const styles = StyleSheet.create({
