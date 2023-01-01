@@ -23,7 +23,10 @@ const FeedWithWEbView = () => {
     }, [page]);
 
     useEffect(() => {
-        unitRef.fetchContent();
+        setTimeout(() => {
+            unitRef.fetchContent(); 
+        }, 3000);
+        
     }, [unitRef]);
 
     const [webViewHeight, setWebViewHeight] = React.useState(null);
@@ -56,11 +59,11 @@ const FeedWithWEbView = () => {
                     injectedJavaScript="window.ReactNativeWebView.postMessage(Math.max(document.body.offsetHeight, document.body.scrollHeight));"
                     style={styles.content}
                     onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
+                    
                 />
                 <Unit
                     style={{
                         width: '100%',
-                        backgroundColor: 'red'
                     }}
                 />
             </ScrollView>

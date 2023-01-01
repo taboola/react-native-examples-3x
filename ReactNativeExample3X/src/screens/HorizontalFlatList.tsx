@@ -58,7 +58,7 @@ const HorizontalFlatList = () => {
                     marginVertical: 10,
                 }}
             >
-                Here's a Taboola Widget in FlatList
+                Here's a Taboola Widget in Horizontal FlatList
             </Text>
             <FlatList
                 ref={ref}
