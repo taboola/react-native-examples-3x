@@ -5,7 +5,9 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import ArticleWithWidgetInFlatList from "./src/screens/ArticleWithWidgetInFlatList";
 import FeedWithArticle from "./src/screens/FeedWithArticle";
+import FeedWithVideo from "./src/screens/FeedWithVideo";
 import FeedWithWebView from "./src/screens/FeedWithWebView";
+import FeedWithWidget from "./src/screens/WidetWithFeed";
 import HorizontalFlatList from "./src/screens/HorizontalFlatList";
 import DarkWidget from "./src/screens/DarkWidget";
 
@@ -37,6 +39,23 @@ function FeedAndWebView() {
     );
 }
 
+
+function FeedAndWidget() {
+    return (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <FeedWithWidget/>
+        </View>
+    );
+}
+
+function FeedAndVideo() {
+    return (
+        <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+            <FeedWithVideo/>
+        </View>
+    );
+}
+
 function HorizontalList() {
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
@@ -50,6 +69,7 @@ function Dark(){
        <DarkWidget/>
     </View>)
 }
+
 
 function MyTabs() {
     const Tab = createMaterialTopTabNavigator();
@@ -102,12 +122,13 @@ function Main() {
             <Text style={{paddingTop: 10, fontSize: 15}}> Taboola React Native Plugin - 3.x </Text>
             <Text style={{paddingTop: 10, fontSize: 15}}>React Native version V{getRNVersion()} </Text>
             <MenuButton name="Feed" navigate="Feed"></MenuButton>
+            <MenuButton name="Feed And Widget" navigate="WidgetAndFeed"></MenuButton>
             <MenuButton name="Feed And WebView" navigate="FeedAndWebView"></MenuButton>
+            <MenuButton name="Feed And Video" navigate="FeedAndVideo"></MenuButton>
+            <MenuButton name="Organic Content Click Handeling" navigate="Feed"></MenuButton>
             <MenuButton name="Widget In Flat List" navigate="Widget"></MenuButton>
             <MenuButton name="Tabs Screen" navigate="Tabs"></MenuButton>
             <MenuButton name="Widget Dark" navigate="WidgetDark"></MenuButton>
-            <MenuButton name="Feed" navigate="Feed"></MenuButton>
-            <MenuButton name="Feed" navigate="Feed"></MenuButton>
             <MenuButton name="Horizontal List" navigate="HorizontalList"></MenuButton>
         </View>
     );
@@ -128,6 +149,8 @@ function App() {
                     <Stack.Screen name="LimiteFeed" component={Feed}/>
                     <Stack.Screen name="Tabs" component={MyTabs}/>
                     <Stack.Screen name="FeedAndWebView" component={FeedAndWebView}/>
+                    <Stack.Screen name="FeedAndVideo" component={FeedAndVideo}/>
+                    <Stack.Screen name="WidgetAndFeed" component={FeedAndWidget}/>
                     <Stack.Screen name="WidgetInFlatList" component={FlatList}/>
                     <Stack.Screen name="HorizontalList" component={HorizontalList}/>
                     <Stack.Screen name="WidgetDark" component={Dark}/>
