@@ -76,8 +76,8 @@ function MyTabs() {
     return (
         <Tab.Navigator>
             <Tab.Screen name="1" component={Feed}/>
-            <Tab.Screen name="2" component={Feed}/>
-            <Tab.Screen name="3" component={Feed}/>
+            <Tab.Screen name="2" component={Widget}/>
+            <Tab.Screen name="3" component={FeedAndWidget}/>
         </Tab.Navigator>
     );
 }
@@ -126,7 +126,7 @@ function Main() {
             <MenuButton name="Feed And WebView" navigate="FeedAndWebView"></MenuButton>
             <MenuButton name="Feed And Video" navigate="FeedAndVideo"></MenuButton>
             <MenuButton name="Organic Content Click Handeling" navigate="Feed"></MenuButton>
-            <MenuButton name="Widget In Flat List" navigate="Widget"></MenuButton>
+            <MenuButton name="Widget In Flat List" navigate="WidgetInFlatList"></MenuButton>
             <MenuButton name="Tabs Screen" navigate="Tabs"></MenuButton>
             <MenuButton name="Widget Dark" navigate="WidgetDark"></MenuButton>
             <MenuButton name="Horizontal List" navigate="HorizontalList"></MenuButton>

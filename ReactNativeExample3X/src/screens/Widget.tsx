@@ -6,7 +6,7 @@ const Widget = (props) => {
     const page = Taboola.getClassicPage(
         'https://www.example.com/articles?id=123',
         'article'
-    ).init(page => page.setPageExtraProperties({"darkMode": "true"}));
+    ).init();
 
     const [Unit, unitRef] = page.useGetUnit(
         'Mid Article',
@@ -27,13 +27,6 @@ const Widget = (props) => {
     }, [unitRef]);
     return (
         <>
-            <Button
-                title={'refresh page'}
-                onPress={() => {
-                    // page.refresh();
-                    // page.setPageExtraProperties({"darkMode": "true"})
-                }}
-            />
             <Unit
                 onItemClick={(e) => console.log(e)}
                 onAdReceiveFail={(e) => console.log(e)}

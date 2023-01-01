@@ -21,7 +21,7 @@ const DarkWidget = () => {
         // if we get heigher height form the screen than the screen will not fully cover the all screen on android.
         <ScrollView style={{width: '100%'}}>
             <View style={{flex: 1}}>
-                <AppText style={{fontWeight: 'bold', fontSize: 40}}>Feed </AppText>
+                <AppText style={{fontWeight: 'bold', fontSize: 40}}>Dark Widget</AppText>
                 <AppText>
                     Sed ut perspiciatis unde omnis iste natus error sit voluptatem
                     accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
