@@ -25,7 +25,7 @@ const FeedWithWEbView = () => {
     useEffect(() => {
         setTimeout(() => {
             unitRef.fetchContent(); 
-        }, 3000);
+        }, 6000);
         
     }, [unitRef]);
 

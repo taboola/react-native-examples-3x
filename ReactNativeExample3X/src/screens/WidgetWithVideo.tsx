@@ -22,7 +22,7 @@ const ArticleWithWidgetInFlatList1 = () => {
   const [Feed, feedRef] = page.useGetUnit(
     'widget-with-video',
     'alternating-widget-with-video-1x4',
-    TBL_PLACEMENT_TYPE.FEED
+    TBL_PLACEMENT_TYPE.PAGE_BOTTOM
   );
 
   useEffect(() => {
