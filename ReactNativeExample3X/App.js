@@ -5,7 +5,7 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
 import ArticleWithWidgetInFlatList from "./src/screens/ArticleWithWidgetInFlatList";
 import FeedWithArticle from "./src/screens/FeedWithArticle";
-import FeedWithVideo from "./src/screens/FeedWithVideo";
+import WidgetWithVideo from "./src/screens/WidgetWithVideo";
 import FeedWithWebView from "./src/screens/FeedWithWebView";
 import FeedWithWidget from "./src/screens/WidetWithFeed";
 import HorizontalFlatList from "./src/screens/HorizontalFlatList";
@@ -51,7 +51,7 @@ function FeedAndWidget() {
 function FeedAndVideo() {
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-            <FeedWithVideo/>
+            <WidgetWithVideo/>
         </View>
     );
 }

@@ -20,8 +20,8 @@ const ArticleWithWidgetInFlatList1 = () => {
   ).init();
 
   const [Feed, feedRef] = page.useGetUnit(
-    'Split feed with video',
-    'thumbs-feed-01',
+    'widget-with-video',
+    'alternating-widget-with-video-1x4',
     TBL_PLACEMENT_TYPE.FEED
   );
 
