@@ -125,7 +125,7 @@ function Main() {
             <MenuButton name="Feed And Widget" navigate="WidgetAndFeed"></MenuButton>
             <MenuButton name="Feed And WebView" navigate="FeedAndWebView"></MenuButton>
             <MenuButton name="Feed And Video" navigate="FeedAndVideo"></MenuButton>
-            <MenuButton name="Organic Content Click Handeling" navigate="Feed"></MenuButton>
+            {/* <MenuButton name="Organic Content Click Handeling" navigate="Feed"></MenuButton> */}
             <MenuButton name="Widget In Flat List" navigate="WidgetInFlatList"></MenuButton>
             <MenuButton name="Tabs Screen" navigate="Tabs"></MenuButton>
             <MenuButton name="Widget Dark" navigate="WidgetDark"></MenuButton>
