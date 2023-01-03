@@ -10,7 +10,7 @@ import {
 } from 'react-native';
 
 // import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/rnt-dev';
-import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/react-native-plugin-3x';
+import {ClassicUnitRefType, Taboola, TBL_PLACEMENT_TYPE, TBLClassicUnit} from '@taboola/react-native-plugin-3x';
 
 
 const ArticleWithWidgetInFlatList1 = () => {
@@ -19,24 +19,24 @@ const ArticleWithWidgetInFlatList1 = () => {
     'article'
   ).init();
 
-  const [Feed, feedRef] = page.useGetUnit(
-    'widget-with-video',
-    'alternating-widget-with-video-1x4',
-    TBL_PLACEMENT_TYPE.PAGE_BOTTOM
-  );
+  // const [Feed, feedRef] = page.useGetUnit(
+  //   'widget-with-video',
+  //   'alternating-widget-with-video-1x4',
+  //   TBL_PLACEMENT_TYPE.PAGE_BOTTOM
+  // );
+
+
+  const [ref, setRef] = useState<ClassicUnitRefType | null>(null);
 
   useEffect(() => {
     return () => {
-      page
-        .removePage()
-        .then((e) => console.log(e))
-        .catch((e) => console.log(e));
+      page.remove();
     };
   }, [page]);
 
   useEffect(() => {
-    feedRef.fetchContent();
-  }, [feedRef]);
+    ref?.fetchContent();
+  }, [ref]);
 
 
   return (
@@ -62,17 +62,28 @@ const ArticleWithWidgetInFlatList1 = () => {
         </AppText>
       </View>
       <View style={{ flex: 1 }}>
-        <Feed
-
-          onItemClick={(e) => console.log(e)}
-          onAdReceiveFail={(e) => console.log(e)}
-          onResize={(e) => {
-            console.log(e, 'new Height');
-          }}
-          style={{
-            width: '100%',
-            flex: 1
-          }}
+        <TBLClassicUnit
+            onAdReceiveFail={() => {}}
+            ref={setRef}
+            onItemClick={(e) => console.log(e.nativeEvent)}
+            onResize={(e) => {
+              console.log(e, 'new Height');
+            }}
+            extraProperties={{
+              enableHorizontalScroll: 'true',
+              keepDependencies: 'true',
+            }}
+            style={{
+              width: '100%',
+              flex: 1,
+              backgroundColor: "green",
+            }}
+            publisherParams={{
+              placement: "widget-with-video",
+              classicPageId: page?.pageId,
+              mode: "alternating-widget-with-video-1x4",
+              placementType: TBL_PLACEMENT_TYPE.PAGE_BOTTOM,
+            }}
         />
 
       </View>

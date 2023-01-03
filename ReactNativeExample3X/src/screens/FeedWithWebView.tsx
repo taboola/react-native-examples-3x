@@ -1,33 +1,27 @@
 import * as React from 'react';
 import {Linking, View, ScrollView, StyleSheet} from 'react-native';
 import {WebView} from 'react-native-webview';
-import {Taboola, TBL_PLACEMENT_TYPE} from "@taboola/react-native-plugin-3x";
-import {useEffect} from "react";
+import {ClassicUnitRefType, Taboola, TBL_PLACEMENT_TYPE, TBLClassicUnit} from "@taboola/react-native-plugin-3x";
+import {useEffect, useState} from "react";
 
 const FeedWithWEbView = () => {
     const page = Taboola.getClassicPage(
         'https://www.example.com/articles?id=123',
         'article'
     ).init();
-    const [Unit, unitRef] = page.useGetUnit(
-        'Mid Article',
-        'alternating-widget-without-video-1x4',
-        TBL_PLACEMENT_TYPE.PAGE_MIDDLE
-    );
+
+
+    const [ref, setRef] = useState<ClassicUnitRefType | null>(null);
 
     useEffect(() => {
         return () => {
-            //clear page from hashMap on the bridge
-            page.removePage();
+            page.remove();
         };
     }, [page]);
 
     useEffect(() => {
-        setTimeout(() => {
-            unitRef.fetchContent(); 
-        }, 6000);
-        
-    }, [unitRef]);
+        ref?.fetchContent();
+    }, [ref]);
 
     const [webViewHeight, setWebViewHeight] = React.useState(null);
 
@@ -59,11 +53,29 @@ const FeedWithWEbView = () => {
                     injectedJavaScript="window.ReactNativeWebView.postMessage(Math.max(document.body.offsetHeight, document.body.scrollHeight));"
                     style={styles.content}
                     onShouldStartLoadWithRequest={onShouldStartLoadWithRequest}
-                    
+
                 />
-                <Unit
+                <TBLClassicUnit
+                    onAdReceiveFail={() => {}}
+                    ref={setRef}
+                    onItemClick={(e) => console.log(e)}
+                    onResize={(e) => {
+                        console.log(e, 'new Height');
+                    }}
+                    extraProperties={{
+                        enableHorizontalScroll: 'true',
+                        keepDependencies: 'true',
+                    }}
                     style={{
                         width: '100%',
+                        flex: 1,
+                        backgroundColor: "red",
+                    }}
+                    publisherParams={{
+                        placement: "Feed without video",
+                        classicPageId: page?.pageId,
+                        mode: "thumbs-feed-01",
+                        placementType: TBL_PLACEMENT_TYPE.FEED,
                     }}
                 />
             </ScrollView>

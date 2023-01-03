@@ -6,86 +6,68 @@ import {
     TextProps,
     View,
 } from 'react-native';
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, {FC, useEffect, useLayoutEffect, useState} from 'react';
+import React, { FC, useEffect, useState } from 'react';
 // import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/rnt-dev';
-import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/react-native-plugin-3x';
-import ClassicUnit from "@taboola/react-native-plugin-3x/lib/typescript/ClassicUnit.android";
+import {
+    TBLClassicUnit,
+    ClassicUnitRefType,
+    Taboola,
+    TBL_PLACEMENT_TYPE,
+} from '@taboola/react-native-plugin-3x';
 
-const MutipleUnitsExample = () => {
+
+const MultipleUnitsExample = () => {
     const p1 = <AppText key="p1">{paragraphs[0]}</AppText>;
     const p2 = <AppText key="p2">{paragraphs[1]}</AppText>;
     const p3 = <AppText key="p2">{paragraphs[2]}</AppText>;
     const p4 = <AppText key="p2">{paragraphs[3]}</AppText>;
     const p5 = <AppText key="p2">{paragraphs[4]}</AppText>;
     const p6 = <AppText key="p2">{paragraphs[4]}</AppText>;
-    const [ref, setRef] = useState<ClassicUnit>();
-        ref.fetchContent()
+
+    const [ref, setRef] = useState<ClassicUnitRefType | null>(null);
+    const [ref2, setRef2] = useState<ClassicUnitRefType | null>(null);
+    const [ref3, setRef3] = useState<ClassicUnitRefType | null>(null);
+    const [ref4, setRef4] = useState<ClassicUnitRefType | null>(null);
+    const [ref5, setRef5] = useState<ClassicUnitRefType | null>(null);
+    const [ref6, setRef6] = useState<ClassicUnitRefType | null>(null);
 
     const page = Taboola.getClassicPage(
         'https://www.example.com/articles?id=123',
         'article'
     ).init();
 
-
-
-    const [Unit, unitRef] = page.useGetUnit(
-        'Below Article Thumbnails Limited-20',
-        'thumbs-feed-01',
-        TBL_PLACEMENT_TYPE.FEED
-    );
-    const [Unit2, unitRef2] = page.useGetUnit(
-        'Mid Article',
-        'alternating-widget-with-video-1x1',
-        TBL_PLACEMENT_TYPE.PAGE_MIDDLE
-    );
-    const [Unit3, unitRef3] = page.useGetUnit(
-        'Mid Article',
-        'alternating-widget-with-video-1x1',
-        TBL_PLACEMENT_TYPE.PAGE_MIDDLE
-    );
-    const [Unit4, unitRef4] = page.useGetUnit(
-        'Mid Article',
-        'alternating-widget-with-video-1x1',
-        TBL_PLACEMENT_TYPE.PAGE_MIDDLE
-    );
-    const [Unit5, unitRef5] = page.useGetUnit(
-        'Mid Article',
-        'alternating-widget-with-video-1x1',
-        TBL_PLACEMENT_TYPE.PAGE_MIDDLE
-    );
-    const [Unit6, unitRef6] = page.useGetUnit(
-        'Mid Article',
-        'alternating-widget-with-video-1x1',
-        TBL_PLACEMENT_TYPE.PAGE_MIDDLE
-    );
-
     useEffect(() => {
         return () => {
-            console.log('clean');
-            page.removePage();
+            page?.remove();
         };
     }, [page]);
 
     useEffect(() => {
-        unitRef.fetchContent();
-    }, [unitRef]);
+        ref?.fetchContent();
+    }, [ref]);
     useEffect(() => {
-        unitRef2.fetchContent()
-    }, [unitRef2]);
+        ref2?.fetchContent();
+    }, [ref2]);
+    useEffect(() => {
+        ref3?.fetchContent();
+    }, [ref3]);
+    useEffect(() => {
+        ref4?.fetchContent();
+    }, [ref4]);
+    useEffect(() => {
+        ref5?.fetchContent();
+    }, [ref5]);
+    useEffect(() => {
+        ref6?.fetchContent();
+    }, [ref6]);
 
     useEffect(() => {
-        unitRef3.fetchContent();
-    }, [unitRef3]);
-    useEffect(() => {
-        unitRef4.fetchContent();
-    }, [unitRef4]);
-    useEffect(() => {
-        unitRef5.fetchContent();
-    }, [unitRef5]);
-    useEffect(() => {
-        unitRef6.fetchContent();
-    }, [unitRef6]);
+        return () => {
+            console.log('clean');
+            page.remove();
+        };
+    }, [page]);
+
     return (
         <View style={{ flex: 1 }}>
             <Text
@@ -125,30 +107,59 @@ const MutipleUnitsExample = () => {
                                     <Button
                                         title={'refresh first Widget'}
                                         onPress={() => {
-                                            unitRef2.refresh();
+                                            ref?.refresh();
                                         }}
                                     />
 
-                                    <Unit2
+                                    <TBLClassicUnit
+                                        onAdReceiveFail={() => {}}
+                                        ref={setRef}
                                         onItemClick={(e) => console.log(e)}
-                                        onAdReceiveFail={(e) => console.log(e)}
-                                        onResize={(e) => {}}
+                                        onResize={(e) => {
+                                            console.log(e, 'new Height');
+                                        }}
+                                        extraProperties={{
+                                            enableHorizontalScroll: 'true',
+                                            keepDependencies: 'true',
+                                        }}
                                         style={{
                                             width: '100%',
-                                            flex: 1,                                        }}
+                                            flex: 1,
+                                            backgroundColor: "red",
+                                        }}
+                                        publisherParams={{
+                                            placement: "Mid Article",
+                                            classicPageId: page?.pageId,
+                                            mode: "alternating-widget-with-video-1x1",
+                                            placementType: TBL_PLACEMENT_TYPE.PAGE_MIDDLE,
+                                        }}
                                     />
                                 </View>
                             );
                         case 'taboola5':
                             return (
                                 <View style={{ flex: 1 }}>
-                                    <Unit5
+                                    <TBLClassicUnit
+                                        onAdReceiveFail={() => {}}
+                                        ref={setRef2}
                                         onItemClick={(e) => console.log(e)}
-                                        onAdReceiveFail={(e) => console.log(e)}
-                                        onResize={(e) => {e}}
+                                        onResize={(e) => {
+                                            console.log(e, 'new Height');
+                                        }}
+                                        extraProperties={{
+                                            enableHorizontalScroll: 'true',
+                                            keepDependencies: 'true',
+                                        }}
                                         style={{
                                             width: '100%',
                                             flex: 1,
+                                            backgroundColor: "red",
+                                        }}
+                                        publisherParams={{
+                                            placement: "Mid Article",
+                                            classicPageId: page?.pageId,
+                                            mode: "alternating-widget-with-video-1x1",
+                                            placementType: TBL_PLACEMENT_TYPE.PAGE_MIDDLE,
                                         }}
                                     />
                                 </View>
@@ -156,13 +167,28 @@ const MutipleUnitsExample = () => {
                         case 'taboola6':
                             return (
                                 <View style={{ flex: 1 }}>
-                                    <Unit6
+                                    <TBLClassicUnit
+                                        onAdReceiveFail={() => {}}
+                                        ref={setRef3}
                                         onItemClick={(e) => console.log(e)}
-                                        onAdReceiveFail={(e) => console.log(e)}
-                                        onResize={(e) => console.log(e)}
+                                        onResize={(e) => {
+                                            console.log(e, 'new Height');
+                                        }}
+                                        extraProperties={{
+                                            enableHorizontalScroll: 'true',
+                                            keepDependencies: 'true',
+                                        }}
                                         style={{
                                             width: '100%',
-                                            flex: 1,                                        }}
+                                            flex: 1,
+                                            backgroundColor: "red",
+                                        }}
+                                        publisherParams={{
+                                            placement: "Mid Article",
+                                            classicPageId: page?.pageId,
+                                            mode: "alternating-widget-with-video-1x1",
+                                            placementType: TBL_PLACEMENT_TYPE.PAGE_MIDDLE,
+                                        }}
                                     />
                                 </View>
                             );
@@ -179,26 +205,56 @@ const MutipleUnitsExample = () => {
                         case 'taboola4':
                             return (
                                 <View style={{ flex: 1 }}>
-                                    <Unit4
+                                    <TBLClassicUnit
+                                        onAdReceiveFail={() => {}}
+                                        ref={setRef4}
                                         onItemClick={(e) => console.log(e)}
-                                        onAdReceiveFail={(e) => console.log(e)}
-                                        onResize={(e) => console.log(e)}
+                                        onResize={(e) => {
+                                            console.log(e, 'new Height');
+                                        }}
+                                        extraProperties={{
+                                            enableHorizontalScroll: 'true',
+                                            keepDependencies: 'true',
+                                        }}
                                         style={{
                                             width: '100%',
-                                            flex: 1,                                        }}
+                                            flex: 1,
+                                            backgroundColor: "red",
+                                        }}
+                                        publisherParams={{
+                                            placement: "Mid Article",
+                                            classicPageId: page?.pageId,
+                                            mode: "alternating-widget-with-video-1x1",
+                                            placementType: TBL_PLACEMENT_TYPE.PAGE_MIDDLE,
+                                        }}
                                     />
                                 </View>
                             );
                         case 'taboola3':
                             return (
                                 <View style={{ flex: 1 }}>
-                                    <Unit3
+                                    <TBLClassicUnit
+                                        onAdReceiveFail={() => {}}
+                                        ref={setRef5}
                                         onItemClick={(e) => console.log(e)}
-                                        onAdReceiveFail={(e) => console.log(e)}
-                                        onResize={(e) => console.log(e)}
+                                        onResize={(e) => {
+                                            console.log(e, 'new Height');
+                                        }}
+                                        extraProperties={{
+                                            enableHorizontalScroll: 'true',
+                                            keepDependencies: 'true',
+                                        }}
                                         style={{
                                             width: '100%',
-                                            flex: 1,                                        }}
+                                            flex: 1,
+                                            backgroundColor: "red",
+                                        }}
+                                        publisherParams={{
+                                            placement: "Mid Article",
+                                            classicPageId: page?.pageId,
+                                            mode: "alternating-widget-with-video-1x1",
+                                            placementType: TBL_PLACEMENT_TYPE.PAGE_MIDDLE,
+                                        }}
                                     />
                                 </View>
                             );
@@ -206,13 +262,29 @@ const MutipleUnitsExample = () => {
                             return p4;
                         case 'taboola':
                             return (
-                                <View style={{ flex: 1 }}>
-                                    <Unit
+                                <View style={styles.container}>
+                                    <TBLClassicUnit
+                                        onAdReceiveFail={() => {}}
+                                        ref={setRef6}
                                         onItemClick={(e) => console.log(e)}
-                                        onAdReceiveFail={(e) => console.log(e)}
+                                        onResize={(e) => {
+                                            console.log(e, 'new Height');
+                                        }}
+                                        extraProperties={{
+                                            enableHorizontalScroll: 'true',
+                                            keepDependencies: 'true',
+                                        }}
                                         style={{
                                             width: '100%',
-                                            flex: 1,                                        }}
+                                            flex: 1,
+                                            backgroundColor: "red",
+                                        }}
+                                        publisherParams={{
+                                            placement: "Below Article Thumbnails Limited-20",
+                                            classicPageId: page?.pageId,
+                                            mode: "thumbs-feed-01",
+                                            placementType: TBL_PLACEMENT_TYPE.FEED,
+                                        }}
                                     />
                                 </View>
                             );
@@ -258,4 +330,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default MutipleUnitsExample;
+export default MultipleUnitsExample;
