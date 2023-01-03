@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Button, View, SafeAreaView, StyleSheet, Image, Text, Platform} from 'react-native';
+import {Button, View, SafeAreaView, StyleSheet, Image, Text, Platform, ScrollView} from 'react-native';
 import {NavigationContainer, useNavigation} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import {createMaterialTopTabNavigator} from '@react-navigation/material-top-tabs';
@@ -115,6 +115,7 @@ function Main() {
         }`
     }
     return (
+        <ScrollView>
         <View style={styles.container}>
             <Image style={{width: '100%', height: undefined, aspectRatio: 4}}
                    source={require('./assets/taboola-logo.png')}/>
@@ -131,6 +132,7 @@ function Main() {
             <MenuButton name="Widget Dark" navigate="WidgetDark"></MenuButton>
             <MenuButton name="Horizontal List" navigate="HorizontalList"></MenuButton>
         </View>
+        </ScrollView>
     );
 }
 
