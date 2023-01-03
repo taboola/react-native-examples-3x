@@ -282,7 +282,7 @@ PODS:
   - React-jsinspector (0.68.5)
   - React-logger (0.68.5):
     - glog
-  - react-native-pager-view (6.1.2):
+  - react-native-pager-view (6.1.1):
     - React-Core
   - react-native-safe-area-context (4.4.1):
     - RCT-Folly
@@ -361,7 +361,7 @@ PODS:
     - React-Core
     - React-RCTImage
   - SocketRocket (0.6.0)
-  - taboola-react-native-taboola (3.0.0-beta.1):
+  - taboola-react-native-taboola (3.0.0):
     - React-Core
     - TaboolaSDK (= 3.8.5)
   - TaboolaSDK (3.8.5)
@@ -556,9 +556,9 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 45c0496ca8cef6b02d9fa0274c25cf458fe91a56
   React-jsinspector: eb202e43b3879aba9a14f3f65788aec85d4e1ea9
   React-logger: 98f663b292a60967ebbc6d803ae96c1381183b6d
-  react-native-pager-view: 54bed894cecebe28cede54c01038d9d1e122de43
-  react-native-safe-area-context: 99b24a0c5acd0d5dcac2b1a7f18c49ea317be99a
-  react-native-webview: 994b9f8fbb504d6314dc40d83f94f27c6831b3bf
+  react-native-pager-view: a8967366eb0c46ad9e35c5be7b20d3274d9eac5b
+  react-native-safe-area-context: ec0d85aca8110dae9327430a9541fec165352dab
+  react-native-webview: 9737b411a470f100d3cfc14eaf58513f05218138
   React-perflogger: 0458a87ea9a7342079e7a31b0d32b3734fb8415f
   React-RCTActionSheet: 22538001ea2926dea001111dd2846c13a0730bc9
   React-RCTAnimation: 732ce66878d4aa151d56a0d142b1105aa12fd313
@@ -573,7 +573,7 @@ SPEC CHECKSUMS:
   ReactCommon: 149e2c0acab9bac61378da0db5b2880a1b5ff59b
   RNScreens: 34cc502acf1b916c582c60003dc3089fa01dc66d
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
-  taboola-react-native-taboola: 29236259abd03f467b36ddb48dfd24a67bda562b
+  taboola-react-native-taboola: d0411c834f3a91b19185730662171b39e3cc2bfd
   TaboolaSDK: b67918b78a56d89ede80a7ee49edc9b31ee49c3a
   Yoga: c4d61225a466f250c35c1ee78d2d0b3d41fe661c
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

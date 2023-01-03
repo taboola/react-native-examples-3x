@@ -12,6 +12,7 @@ import com.facebook.soloader.SoLoader;
 import com.reactnativeexample3x.newarchitecture.MainApplicationReactNativeHost;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+  import android.webkit.WebView;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -53,6 +54,8 @@ public class MainApplication extends Application implements ReactApplication {
   public void onCreate() {
     super.onCreate();
     // If you opted-in for the New Architecture, we enable the TurboModule system
+        WebView.setWebContentsDebuggingEnabled(true);
+
     ReactFeatureFlags.useTurboModules = BuildConfig.IS_NEW_ARCHITECTURE_ENABLED;
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
