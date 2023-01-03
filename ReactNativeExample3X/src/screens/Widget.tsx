@@ -22,6 +22,7 @@ const Widget = (props) => {
     return (
         <>
             <TBLClassicUnit
+
                 onAdReceiveFail={() => {}}
                 ref={setRef}
                 onItemClick={(e) => console.log(e.nativeEvent)}
@@ -35,7 +36,6 @@ const Widget = (props) => {
                 style={{
                     width: '100%',
                     flex: 1,
-                    backgroundColor: "green",
                 }}
                 publisherParams={{
                     placement: "Mid Article",
@@ -43,6 +43,8 @@ const Widget = (props) => {
                     mode: "alternating-widget-without-video-1x4",
                     placementType: TBL_PLACEMENT_TYPE.PAGE_MIDDLE,
                 }}
+                {...props}
+
             />
         </>
 
