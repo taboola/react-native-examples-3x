@@ -10,10 +10,15 @@ import {
 
 import Widget from "./Widget";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
+import {Taboola} from "@taboola/react-native-plugin-3x";
 
 const SCENES = ['WIDGET', 'WIDGET', 'WIDGET'];
 
 const HorizontalFlatList = () => {
+    const page = Taboola.getClassicPage(
+        'https://www.example.com/articles?id=123',
+        'article'
+    ).init();
     const ref = useRef(null)
     const SCREEN = Dimensions.get('window');
     const insets = useSafeAreaInsets();
@@ -33,7 +38,7 @@ const HorizontalFlatList = () => {
     const renderWidgetScene = () => (
         <ScrollView contentContainerStyle={{ width: width}}>
             {p1}
-            <Widget/>
+            <Widget page={page}/>
         </ScrollView>
     );
 

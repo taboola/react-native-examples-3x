@@ -15,7 +15,10 @@ import Widget from "./Widget";
 
 
 const DarkWidget = () => {
-
+    const page = Taboola.getClassicPage(
+        'https://www.example.com/articles?id=123',
+        'article'
+    ).init();
 
     return (
         // if we get heigher height form the screen than the screen will not fully cover the all screen on android.
@@ -34,6 +37,7 @@ const DarkWidget = () => {
 
             <View style={{flex: 1}}>
                 <Widget
+                    page={page}
                     extraProperties={{
                     "darkMode": "true"
                 }}

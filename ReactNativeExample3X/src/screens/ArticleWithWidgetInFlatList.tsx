@@ -16,7 +16,10 @@ const ArticleWithWidgetInFlatList = () => {
     // const ref = useRef(null);
     const p1 = <AppText key="p1">{paragraphs[0]}</AppText>;
     const p2 = <AppText key="p2">{paragraphs[1]}</AppText>;
-
+    const page = Taboola.getClassicPage(
+        'https://www.example.com/articles?id=123',
+        'article'
+    ).init();
     return (
         <View style={{ flex: 1 }}>
             <Text
@@ -48,7 +51,7 @@ const ArticleWithWidgetInFlatList = () => {
                         case 'taboola':
                             return (
                                 <View style={styles.container}>
-                                  <Widget/>
+                                  <Widget page={page}/>
                                 </View>
                             );
                         default:
