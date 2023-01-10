@@ -44,7 +44,7 @@ const FeedWithWEbView = () => {
             opacity: 0.99,
             overflow: 'hidden'
         }}>
-            <ScrollView  contentContainerStyle={{height: webViewHeight}}>
+            <ScrollView overScrollMode="never"  contentContainerStyle={{height: webViewHeight}}>
                 <WebView
                     source={{uri: 'https://tofugear.com'}}
                     bounces={true}
@@ -68,7 +68,6 @@ const FeedWithWEbView = () => {
                     }}
                     style={{
                         width: '100%',
-                        flex: 1,
                         backgroundColor: "red",
                     }}
                     publisherParams={{
