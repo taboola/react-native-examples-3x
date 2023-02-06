@@ -41,7 +41,6 @@ const FeedWithWEbView = () => {
         <View style={{
             flex: 1,
             width: '100%',
-            opacity: 0.99,
             overflow: 'hidden'
         }}>
             <ScrollView overScrollMode="never"  contentContainerStyle={{height: webViewHeight}}>
@@ -96,7 +95,6 @@ const styles = StyleSheet.create({
     content: {
         borderTopLeftRadius: 30,
         borderTopRightRadius: 30,
-        opacity: 0.99,
         overflow: 'hidden',
         marginTop: 20,
     },
