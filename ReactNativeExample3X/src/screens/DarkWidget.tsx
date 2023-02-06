@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, {FC, useEffect, useState} from 'react';
+import React, {FC, useCallback, useEffect, useMemo, useRef, useState} from 'react';
 
 import {
     Text,
@@ -10,15 +10,35 @@ import {
 } from 'react-native';
 
 // import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/rnt-dev';
-import {Taboola, TBL_PLACEMENT_TYPE} from '@taboola/react-native-plugin-3x';
+import {ClassicUnitRefType, Taboola, TBL_PLACEMENT_TYPE, TBLClassicUnit} from '@taboola/react-native-plugin-3x';
 import Widget from "./Widget";
+import {useGetPageId, useNodeRef} from "../hooks";
 
 
 const DarkWidget = () => {
-    const page = Taboola.getClassicPage(
-        'https://www.example.com/articles?id=123',
-        'article'
-    ).init();
+    console.log('1️⃣ First line ', new Date().toISOString());
+
+    const page = useMemo(
+      () =>
+        Taboola.getClassicPage(
+          'https://www.example.com/articles?id=123',
+          'article'
+        ),
+      []
+    );
+    const [pageId] = useGetPageId(page);
+    const [setRef] = useNodeRef((unit) => {
+        unit.fetchContent();
+    });
+
+
+    console.log('2️⃣  line');
+
+
+
+
+
+    console.log('🎨 render', new Date().toISOString());
 
     return (
         // if we get heigher height form the screen than the screen will not fully cover the all screen on android.
@@ -36,11 +56,21 @@ const DarkWidget = () => {
             </View>
 
             <View style={{flex: 1}}>
-                <Widget
-                    page={page}
-                    extraProperties={{
-                    "darkMode": "true"
-                }}
+                <TBLClassicUnit
+
+                    publisherParams={{
+                        classicPageId: pageId,
+                        placement: "Mid Article",
+                        mode: "alternating-widget-without-video-1x4",
+                        placementType: TBL_PLACEMENT_TYPE.PAGE_MIDDLE,
+                    }}
+                    ref={setRef}
+                    style={{
+                        width: '100%',
+                        flex: 1,
+                    }}
+
+
                 />
 
             </View>
@@ -61,3 +91,4 @@ const AppText: FC<TextProps> = ({...props}) => {
         />
     );
 };
+
