@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import React, {FC, useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
 
 import {
     View,
@@ -9,17 +9,23 @@ import {
 } from 'react-native';
 
 // import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/rnt-dev';
-import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/react-native-plugin-3x';
+import {Taboola, TBL_PLACEMENT_TYPE, useGetPageId} from '@taboola/react-native-plugin-3x';
 import Widget from "./Widget";
 
 const ArticleWithWidgetInFlatList = () => {
     // const ref = useRef(null);
     const p1 = <AppText key="p1">{paragraphs[0]}</AppText>;
     const p2 = <AppText key="p2">{paragraphs[1]}</AppText>;
-    const page = Taboola.getClassicPage(
-        'https://www.example.com/articles?id=123',
-        'article'
-    ).init();
+
+    const page = useMemo(
+        () =>
+            Taboola.getClassicPage(
+                'https://www.example.com/articles?id=123',
+                'article'
+            ),
+        []
+    );
+    const [pageId] = useGetPageId(page);
     return (
         <View style={{ flex: 1 }}>
             <Text

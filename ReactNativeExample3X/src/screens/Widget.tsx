@@ -1,20 +1,27 @@
 import {View, StyleSheet, Button, Platform} from "react-native";
-import {ClassicUnitRefType, Taboola, TBL_PLACEMENT_TYPE, TBLClassicUnit} from "@taboola/react-native-plugin-3x";
+import {
+    ClassicUnitRefType,
+    Taboola,
+    TBL_PLACEMENT_TYPE,
+    TBLClassicUnit,
+    useNodeRef
+} from "@taboola/react-native-plugin-3x";
 import React, {FC, useEffect, useLayoutEffect, useRef, useState} from 'react';
 
 const Widget = (props) => {
 
-    const [ref, setRef] = useState<ClassicUnitRefType | null>(null);
 
+    const [setRef] = useNodeRef((unit) => {
+        //onComponent mount
+        unit.fetchContent();
+
+    });
     useEffect(() => {
         return () => {
             props.page.remove();
         };
     }, [props.page]);
 
-    useEffect(() => {
-        ref?.fetchContent();
-    }, [ref]);
 
     return (
         <>

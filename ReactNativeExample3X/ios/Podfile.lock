@@ -361,7 +361,7 @@ PODS:
     - React-Core
     - React-RCTImage
   - SocketRocket (0.6.0)
-  - taboola-react-native-taboola (3.0.0):
+  - taboola-react-native-taboola (3.0.1):
     - React-Core
     - TaboolaSDK (= 3.8.5)
   - TaboolaSDK (3.8.5)
@@ -573,7 +573,7 @@ SPEC CHECKSUMS:
   ReactCommon: 149e2c0acab9bac61378da0db5b2880a1b5ff59b
   RNScreens: 34cc502acf1b916c582c60003dc3089fa01dc66d
   SocketRocket: fccef3f9c5cedea1353a9ef6ada904fde10d6608
-  taboola-react-native-taboola: d0411c834f3a91b19185730662171b39e3cc2bfd
+  taboola-react-native-taboola: 68bfed9cbad98af9ad785b1531516fe63584423f
   TaboolaSDK: b67918b78a56d89ede80a7ee49edc9b31ee49c3a
   Yoga: c4d61225a466f250c35c1ee78d2d0b3d41fe661c
   YogaKit: f782866e155069a2cca2517aafea43200b01fd5a

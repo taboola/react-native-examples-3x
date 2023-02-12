@@ -1,5 +1,5 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, { FC, useEffect, useState } from 'react';
+import React, {FC, useEffect, useMemo, useState} from 'react';
 
 import {
   Text,
@@ -10,23 +10,33 @@ import {
 } from 'react-native';
 
 // import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/rnt-dev';
-import {ClassicUnitRefType, Taboola, TBL_PLACEMENT_TYPE, TBLClassicUnit} from '@taboola/react-native-plugin-3x';
+import {
+  ClassicUnitRefType,
+  Taboola,
+  TBL_PLACEMENT_TYPE,
+  TBLClassicUnit,
+  useNodeRef
+} from '@taboola/react-native-plugin-3x';
+import {useGetPageId} from "../hooks";
 
 
 const ArticleWithWidgetInFlatList1 = () => {
-  const page = Taboola.getClassicPage(
-    'https://www.example.com/articles?id=123',
-    'article'
-  ).init();
 
-  // const [Feed, feedRef] = page.useGetUnit(
-  //   'widget-with-video',
-  //   'alternating-widget-with-video-1x4',
-  //   TBL_PLACEMENT_TYPE.PAGE_BOTTOM
-  // );
+  const page = useMemo(
+      () =>
+          Taboola.getClassicPage(
+              'https://www.example.com/articles?id=123',
+              'article'
+          ),
+      []
+  );
 
+  const [setRef] = useNodeRef((unit) => {
+    //onComponent mount
+    unit.fetchContent();
 
-  const [ref, setRef] = useState<ClassicUnitRefType | null>(null);
+  });
+  const [pageId] = useGetPageId(page);
 
   useEffect(() => {
     return () => {
@@ -34,9 +44,7 @@ const ArticleWithWidgetInFlatList1 = () => {
     };
   }, [page]);
 
-  useEffect(() => {
-    ref?.fetchContent();
-  }, [ref]);
+
 
 
   return (
@@ -80,7 +88,7 @@ const ArticleWithWidgetInFlatList1 = () => {
             }}
             publisherParams={{
               placement: "widget-with-video",
-              classicPageId: page?.pageId,
+              classicPageId: pageId,
               mode: "alternating-widget-with-video-1x4",
               placementType: TBL_PLACEMENT_TYPE.PAGE_BOTTOM,
             }}

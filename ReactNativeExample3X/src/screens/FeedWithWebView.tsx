@@ -1,17 +1,33 @@
 import * as React from 'react';
 import {Linking, View, ScrollView, StyleSheet} from 'react-native';
 import {WebView} from 'react-native-webview';
-import {ClassicUnitRefType, Taboola, TBL_PLACEMENT_TYPE, TBLClassicUnit} from "@taboola/react-native-plugin-3x";
-import {useEffect, useState} from "react";
+import {
+    ClassicUnitRefType,
+    Taboola,
+    TBL_PLACEMENT_TYPE,
+    TBLClassicUnit,
+    useNodeRef
+} from "@taboola/react-native-plugin-3x";
+import {useEffect, useMemo, useState} from "react";
+import {useGetPageId} from "../hooks";
 
 const FeedWithWEbView = () => {
-    const page = Taboola.getClassicPage(
-        'https://www.example.com/articles?id=123',
-        'article'
-    ).init();
 
+    const page = useMemo(
+        () =>
+            Taboola.getClassicPage(
+                'https://www.example.com/articles?id=123',
+                'article'
+            ),
+        []
+    );
+    const [pageId] = useGetPageId(page);
 
-    const [ref, setRef] = useState<ClassicUnitRefType | null>(null);
+    const [setRef] = useNodeRef((unit) => {
+        //onComponent mount
+        unit.fetchContent();
+
+    });
 
     useEffect(() => {
         return () => {
@@ -19,9 +35,7 @@ const FeedWithWEbView = () => {
         };
     }, [page]);
 
-    useEffect(() => {
-        ref?.fetchContent();
-    }, [ref]);
+
 
     const [webViewHeight, setWebViewHeight] = React.useState(null);
 
@@ -71,7 +85,7 @@ const FeedWithWEbView = () => {
                     }}
                     publisherParams={{
                         placement: "Feed without video",
-                        classicPageId: page?.pageId,
+                        classicPageId: pageId,
                         mode: "thumbs-feed-01",
                         placementType: TBL_PLACEMENT_TYPE.FEED,
                     }}

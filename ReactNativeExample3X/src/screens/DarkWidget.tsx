@@ -27,6 +27,7 @@ const DarkWidget = () => {
       []
     );
     const [pageId] = useGetPageId(page);
+    page.setPageExtraProperties({ darkMode: "true" })
     const [setRef] = useNodeRef((unit) => {
         unit.fetchContent();
     });
@@ -60,7 +61,7 @@ const DarkWidget = () => {
 
                     publisherParams={{
                         classicPageId: pageId,
-                        placement: "Mid Article",
+                        placement: "Below Article",
                         mode: "alternating-widget-without-video-1x4",
                         placementType: TBL_PLACEMENT_TYPE.PAGE_MIDDLE,
                     }}

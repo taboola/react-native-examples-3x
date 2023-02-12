@@ -1,4 +1,4 @@
-import React, {FC, useEffect, useLayoutEffect, useRef, useState} from 'react';
+import React, {FC, useEffect, useLayoutEffect, useMemo, useRef, useState} from 'react';
 
 import {
     View,
@@ -10,15 +10,24 @@ import {
 
 import Widget from "./Widget";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
-import {Taboola} from "@taboola/react-native-plugin-3x";
+import {Taboola, useNodeRef} from "@taboola/react-native-plugin-3x";
+import {useGetPageId} from "../hooks";
 
 const SCENES = ['WIDGET', 'WIDGET', 'WIDGET'];
 
 const HorizontalFlatList = () => {
-    const page = Taboola.getClassicPage(
-        'https://www.example.com/articles?id=123',
-        'article'
-    ).init();
+
+    const page = useMemo(
+        () =>
+            Taboola.getClassicPage(
+                'https://www.example.com/articles?id=123',
+                'article'
+            ),
+        []
+    );
+
+    const [pageId] = useGetPageId(page);
+
     const ref = useRef(null)
     const SCREEN = Dimensions.get('window');
     const insets = useSafeAreaInsets();
