@@ -10,9 +10,14 @@ import {
 } from 'react-native';
 
 // import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/rnt-dev';
-import {ClassicUnitRefType, Taboola, TBL_PLACEMENT_TYPE, TBLClassicUnit} from '@taboola/react-native-plugin-3x';
+import {
+    ClassicUnitRefType,
+    Taboola,
+    TBL_PLACEMENT_TYPE,
+    TBLClassicUnit,
+    useGetPageId, useNodeRef
+} from '@taboola/react-native-plugin-3x';
 import Widget from "./Widget";
-import {useGetPageId, useNodeRef} from "../hooks";
 
 
 const DarkWidget = () => {
