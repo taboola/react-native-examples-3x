@@ -10,8 +10,7 @@ import {
 
 import Widget from "./Widget";
 import {useSafeAreaInsets} from "react-native-safe-area-context";
-import {Taboola, useNodeRef} from "@taboola/react-native-plugin-3x";
-import {useGetPageId} from "../hooks";
+import {Taboola, useGetPageId} from "@taboola/react-native-plugin-3x";
 
 const SCENES = ['WIDGET', 'WIDGET', 'WIDGET'];
 

@@ -6,10 +6,9 @@ import {
     Taboola,
     TBL_PLACEMENT_TYPE,
     TBLClassicUnit,
-    useNodeRef
+    useNodeRef,useGetPageId
 } from "@taboola/react-native-plugin-3x";
 import {useEffect, useMemo, useState} from "react";
-import {useGetPageId} from "../hooks";
 
 const FeedWithWEbView = () => {
 

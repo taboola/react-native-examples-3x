@@ -15,9 +15,9 @@ import {
   Taboola,
   TBL_PLACEMENT_TYPE,
   TBLClassicUnit,
-  useNodeRef
+  useNodeRef,useGetPageId
 } from '@taboola/react-native-plugin-3x';
-import {useGetPageId} from "../hooks";
+
 
 
 const ArticleWithWidgetInFlatList1 = () => {
@@ -31,6 +31,7 @@ const ArticleWithWidgetInFlatList1 = () => {
       []
   );
   const [pageId] = useGetPageId(page);
+  page.setUserId("daniel")
 
   const [setRef] = useNodeRef((unit) => {
     //onComponent mount

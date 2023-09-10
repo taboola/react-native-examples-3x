@@ -10,13 +10,7 @@ import {
 } from 'react-native';
 
 // import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/rnt-dev';
-import {
-    ClassicUnitRefType,
-    Taboola,
-    TBL_PLACEMENT_TYPE,
-    TBLClassicUnit, useGetPageId,
-    useNodeRef
-} from '@taboola/react-native-plugin-3x';
+import {Taboola, TBL_PLACEMENT_TYPE, TBLClassicUnit, useGetPageId} from "@taboola/react-native-plugin-3x";
 
 
 const ArticleWithWidgetInFlatList1 = () => {
@@ -30,12 +24,7 @@ const ArticleWithWidgetInFlatList1 = () => {
         []
     );
     const [pageId] = useGetPageId(page);
-    const [setRef] = useNodeRef((unit) => {
-        //onComponent mount
-        unit.fetchContent();
-        console.log('unit.fetchContent',unit)
 
-    });
   useEffect(() => {
     return () => {
       page.remove();
@@ -61,7 +50,7 @@ const ArticleWithWidgetInFlatList1 = () => {
       <View style={{ flex: 1 }}>
         <TBLClassicUnit
             onAdReceiveFail={() => {}}
-            ref={setRef}
+            isAutoFetch={true}
             onItemClick={(e) => console.log(e)}
             onResize={(e) => {
               console.log(e, 'new Height');

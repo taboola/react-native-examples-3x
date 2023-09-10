@@ -10,6 +10,7 @@ import FeedWithWebView from "./src/screens/FeedWithWebView";
 import FeedWithWidget from "./src/screens/WidetWithFeed";
 import HorizontalFlatList from "./src/screens/HorizontalFlatList";
 import DarkWidget from "./src/screens/DarkWidget";
+import { dependencies } from './package.json';
 
 
 
@@ -120,11 +121,11 @@ function Main() {
             <Image style={{width: '100%', height: undefined, aspectRatio: 4}}
                    source={require('./assets/taboola-logo.png')}/>
             <Text style={{paddingTop: 15, fontSize: 15}}>Taboola SDK-3.x iOS / 3.x Android </Text>
-            <Text style={{paddingTop: 10, fontSize: 15}}> Taboola React Native Plugin - 3.x </Text>
+            <Text style={{paddingTop: 10, fontSize: 15}}> Taboola React Native Plugin - V{dependencies["@taboola/react-native-plugin-3x"]} </Text>
             <Text style={{paddingTop: 10, fontSize: 15}}>React Native version V{getRNVersion()} </Text>
             <MenuButton name="Feed" navigate="Feed"></MenuButton>
-            <MenuButton name="Feed And Widget" navigate="WidgetAndFeed"></MenuButton>
-            <MenuButton name="Feed And WebView" navigate="FeedAndWebView"></MenuButton>
+            <MenuButton name="Widget with Feed" navigate="WidgetAndFeed"></MenuButton>
+            <MenuButton name="Feed with WebView" navigate="FeedAndWebView"></MenuButton>
             <MenuButton name="Feed And Video" navigate="FeedAndVideo"></MenuButton>
             {/* <MenuButton name="Organic Content Click Handeling" navigate="Feed"></MenuButton> */}
             <MenuButton name="Widget In Flat List" navigate="WidgetInFlatList"></MenuButton>
@@ -144,7 +145,7 @@ function App() {
     return (
         <SafeAreaView style={{flex: 1}}>
             <NavigationContainer>
-                <Stack.Navigator screenOptions={{headerShown: false}}>
+                <Stack.Navigator >
                     <Stack.Screen name="Main" component={Main}/>
                     <Stack.Screen name="Widget" component={Widget}/>
                     <Stack.Screen name="Feed" component={Feed}/>

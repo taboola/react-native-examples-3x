@@ -15,9 +15,10 @@ import {
   Taboola,
   TBL_PLACEMENT_TYPE,
   TBLClassicUnit,
-  useNodeRef
+  useNodeRef,
+  useGetPageId
 } from '@taboola/react-native-plugin-3x';
-import {useGetPageId} from "../hooks";
+
 
 
 const ArticleWithWidgetInFlatList1 = () => {

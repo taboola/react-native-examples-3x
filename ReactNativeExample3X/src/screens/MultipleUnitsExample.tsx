@@ -12,8 +12,8 @@ import {
     ClassicUnitRefType,
     Taboola,
     TBL_PLACEMENT_TYPE,
+    useGetPageId, useNodeRef
 } from '@taboola/react-native-plugin-3x';
-import {useGetPageId, useNodeRef} from "../hooks";
 
 
 const MultipleUnitsExample = () => {

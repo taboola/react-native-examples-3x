@@ -1,15 +1,14 @@
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-import React, {FC, useCallback, useEffect, useMemo, useRef, useState} from 'react';
+import React, {FC, useMemo,} from 'react';
 
 import {
     Text,
     ScrollView,
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     TextProps,
-    View, Button,
+    View,
 } from 'react-native';
 
-// import { Taboola, TBL_PLACEMENT_TYPE } from '@taboola/rnt-dev';
 import {
     ClassicUnitRefType,
     Taboola,
@@ -17,34 +16,21 @@ import {
     TBLClassicUnit,
     useGetPageId, useNodeRef
 } from '@taboola/react-native-plugin-3x';
-import Widget from "./Widget";
 
 
 const DarkWidget = () => {
-    console.log('1️⃣ First line ', new Date().toISOString());
 
     const page = useMemo(
-      () =>
-        Taboola.getClassicPage(
-          'https://www.example.com/articles?id=123',
-          'article'
-        ),
-      []
+        () =>
+            Taboola.getClassicPage(
+                'https://www.example.com/articles?id=123',
+                'article'
+            ),
+        []
     );
     const [pageId] = useGetPageId(page);
-    page.setPageExtraProperties({ darkMode: "true" })
-    const [setRef] = useNodeRef((unit) => {
-        unit.fetchContent();
-    });
+    page.setPageExtraProperties({darkMode: "true"})
 
-
-    console.log('2️⃣  line');
-
-
-
-
-
-    console.log('🎨 render', new Date().toISOString());
 
     return (
         // if we get heigher height form the screen than the screen will not fully cover the all screen on android.
@@ -63,20 +49,17 @@ const DarkWidget = () => {
 
             <View style={{flex: 1}}>
                 <TBLClassicUnit
-
+                    isAutoFetch={true}
                     publisherParams={{
                         classicPageId: pageId,
                         placement: "Below Article",
                         mode: "alternating-widget-without-video-1x4",
                         placementType: TBL_PLACEMENT_TYPE.PAGE_MIDDLE,
                     }}
-                    ref={setRef}
                     style={{
                         width: '100%',
                         flex: 1,
                     }}
-
-
                 />
 
             </View>
