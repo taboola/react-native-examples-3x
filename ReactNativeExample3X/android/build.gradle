@@ -6,8 +6,11 @@ buildscript {
     ext {
         buildToolsVersion = "31.0.0"
         minSdkVersion = 21
-        compileSdkVersion = 31
-        targetSdkVersion = 31
+        compileSdkVersion = 32
+        targetSdkVersion = 32
+       //there is issue with RN 0.72 when using shopify/flash-list
+        //https://github.com/Shopify/flash-list/issues/862
+        kotlinVersion = "1.8.10"
 
         if (System.properties['os.arch'] == "aarch64") {
             // For M1 Users we need to use the NDK 24 which added support for aarch64
@@ -25,6 +28,7 @@ buildscript {
         classpath("com.android.tools.build:gradle:7.0.4")
         classpath("com.facebook.react:react-native-gradle-plugin")
         classpath("de.undercouch:gradle-download-task:4.1.2")
+
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
