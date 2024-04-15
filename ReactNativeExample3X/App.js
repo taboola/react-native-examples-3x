@@ -11,6 +11,7 @@ import FeedWithWidget from "./src/screens/WidetWithFeed";
 import HorizontalFlatList from "./src/screens/HorizontalFlatList";
 import DarkWidget from "./src/screens/DarkWidget";
 import { dependencies } from './package.json';
+import LazyLoadScreen from "./src/screens/LazyLoadScreen";
 
 
 
@@ -61,6 +62,14 @@ function HorizontalList() {
     return (
         <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
             <HorizontalFlatList/>
+        </View>
+    );
+}
+
+function LazyLoadScreenContainer() {
+    return (
+        <View style={{flex: 1}}>
+            <LazyLoadScreen/>
         </View>
     );
 }
@@ -132,6 +141,7 @@ function Main() {
             <MenuButton name="Tabs Screen" navigate="Tabs"></MenuButton>
             <MenuButton name="Widget Dark" navigate="WidgetDark"></MenuButton>
             <MenuButton name="Horizontal List" navigate="HorizontalList"></MenuButton>
+            <MenuButton name="LazyLoadScreenContainer" navigate="LazyLoadScreenContainer"></MenuButton>
         </View>
         </ScrollView>
     );
@@ -156,6 +166,7 @@ function App() {
                     <Stack.Screen name="WidgetAndFeed" component={FeedAndWidget}/>
                     <Stack.Screen name="WidgetInFlatList" component={FlatList}/>
                     <Stack.Screen name="HorizontalList" component={HorizontalList}/>
+                    <Stack.Screen name="LazyLoadScreenContainer" component={LazyLoadScreenContainer}/>
                     <Stack.Screen name="WidgetDark" component={Dark}/>
                 </Stack.Navigator>
             </NavigationContainer>
