@@ -1,12 +1,3 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "sourceMap": true,
-    "jsx": "react",
-    "allowSyntheticDefaultImports": true
-  },
-  "exclude": [
-    "node_modules"
-  ]
+  "extends": "@react-native/typescript-config/tsconfig.json"
 }
