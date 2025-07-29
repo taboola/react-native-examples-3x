@@ -11,7 +11,7 @@ import FeedWithWidget from "./src/screens/WidetWithFeed";
 import HorizontalFlatList from "./src/screens/HorizontalFlatList";
 import DarkWidget from "./src/screens/DarkWidget";
 import { dependencies } from './package.json';
-// import LazyLoadScreen from "./src/screens/LazyLoadScreen";
+import LazyLoadScreen from "./src/screens/LazyLoadScreen";
 
 
 
@@ -69,7 +69,7 @@ function HorizontalList() {
 function LazyLoadScreenContainer() {
     return (
         <View style={{flex: 1}}>
-
+            <LazyLoadScreen/>
         </View>
     );
 }
